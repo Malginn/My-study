@@ -1,0 +1,25 @@
+{
+  "name": "react_htmllessons.ru",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node back/server",
+    "server": "nodemon back/server",
+    "dev": "concurrently  \"npm run server\"   \"npm run client\"   "
+  },
+  "author": "Nikitos",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.9"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "concurrently": "^6.3.0",
+    "i": "^0.3.7",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13"
+  }
+}
