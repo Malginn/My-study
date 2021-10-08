@@ -1,5 +1,5 @@
-// этот контроллер @desq получает user profile по адресу @route и нужно авторизоваться, чтобы его получить
-//@desq Get user profile
+// этот контроллер @desq получает user profile по адресу @route и нужно авторизоваться(private), чтобы его получить
+//@desq Get api user profile
 //@route(путь)  GET /api/users/profile
 //@access Private(авторизованный пользователь   )
 

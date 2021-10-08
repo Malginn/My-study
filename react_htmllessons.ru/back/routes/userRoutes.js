@@ -1,8 +1,14 @@
+//импортируем Express and импортируем контроллер(в роуте пишем к нему путь)
 import express from 'express'
 import { getUserProfile } from '../controllers/userController.js' //импортировали контроллер
 
-const router = express.Router()  //получаем роутер из экспресс??
-router.route('/profile').get(getUserProfile)  //связываем роутер и контроллер
 
-export default router
+//получаем роутер из экспресс
+const router = express.Router() 
+
+//связываем роутер и контроллер, продолжаем путь до роутера
+router.route('/profile').get(getUserProfile)  
+
+
+export default router //экспортируем для импорта в проект
 
