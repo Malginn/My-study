@@ -1,0 +1,4 @@
+TODO: 
+    [x] Обработчик ошибок (middleware)
+    [] Generate JWT token
+    [] Token (авторизация - Auth) middleware

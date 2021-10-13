@@ -28,7 +28,7 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
 
-//если пароль не менялся, идем дальше(next()) иначе перед сохранением снова хэшируем пароль(шифруем)
+//если пароль поменялся, идем дальше(next())перед сохранением снова хэшируем пароль(шифруем)
 userSchema.pre('save', async function(next){
     if(!this.isModified('password')){
         next()

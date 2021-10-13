@@ -5,6 +5,7 @@
 
 
 export const getUserProfile = (req, res) =>{
+    //в req мы будем принимать данные из запроса
     const user = {
         name:'Nikita',
         age: 18

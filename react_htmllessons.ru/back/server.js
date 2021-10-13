@@ -1,29 +1,34 @@
-//импортируем и подключаем dotenv
-import dotenv from 'dotenv'
-dotenv.config()
-
-//Config
-import {connectDB} from './config/db.js'    
-connectDB()
-
 //импортируем и подлкчаем Express, пакет для цветной консоли, ИСПОЛЬЗУЕМ EXPRESS в формате JSON
 import express from 'express'
-import colors from 'colors'
-const app = express() //заносим экспресс в переменную app
-app.use(express.json()) //используем экспресс в формате json
-
-
-
-//импортируем и подключаем morgan(вывод запросов в консоль(для продакшн)) !Только для разработки через файл .env
 import morgan from 'morgan'
-if(process.env.NODE_ENV === 'development')
-    app.use(morgan('dev'))
+import dotenv from 'dotenv'
+import colors from 'colors'
 
+//Config
+import {connectDB} from './config/db.js'  
+
+//Middleware
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 //Routes    
 import userRoutes from './routes/userRoutes.js' //импортирnpуем роут
+
+//подключаем dotenv
+dotenv.config()
+//подлкючаем базу данных
+connectDB()
+//заносим экспресс в переменную app
+const app = express()
+
+//подключаем morgan(вывод запросов в консоль(для продакшн)) !Только для разработки через файл .env
+if(process.env.NODE_ENV === 'development') app.use(morgan('dev'))
+
+app.use(express.json()) //используем экспресс в формате json
+
 app.use('/api/users', userRoutes)  //подключаем И ПИШЕМ ПУТЬ ДО РОУТА
 
+app.use(notFound)
+app.use(errorHandler)
 
 
 //для запуска
