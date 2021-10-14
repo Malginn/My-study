@@ -1,4 +1,5 @@
 TODO: 
     [x] Обработчик ошибок (middleware)
-    [] Generate JWT token
-    [] Token (авторизация - Auth) middleware
+    [x] Generate JWT token
+    [x] Token (авторизация - Auth) middleware
+    [x] - Authentication(вход по токену)

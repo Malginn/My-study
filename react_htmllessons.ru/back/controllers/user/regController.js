@@ -1,5 +1,6 @@
 import User from '../../models/userModel.js'
 import asyncHandler from 'express-async-handler'
+import { generateToken } from '../../helpers/generateToken.js'
 //@desq Register user
 //@route(путь)  POST /api/users/
 //@access Public
@@ -25,6 +26,8 @@ export const regUser = asyncHandler(async(req,res) =>{
     })
 
     //Create token
-
-    res.json(user)
+    const token = generateToken(user._id)
+    
+    //вывод схемы юзера и токен в отдельных объектах
+    res.json({ user, token })
 })

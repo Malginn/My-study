@@ -3,13 +3,13 @@
 //@route(путь)  GET /api/users/profile
 //@access Private(авторизованный пользователь   )
 
+import asyncHandler from "express-async-handler"
+import User from "../../models/userModel.js"
 
-export const getUserProfile = (req, res) =>{
-    //в req мы будем принимать данные из запроса
-    const user = {
-        name:'Nikita',
-        age: 18
-    }
+//ищем по id и выдаем пользователя get запрос, если его нет,то у нас middlware -> errorMiddleware.js
+export const getUserProfile = asyncHandler(async(req, res) =>{
+    const user = await User.findById(req.user._id) .select('-password')
 
-    res.json(user) //ответ в формате json
-}
+    res.json(user)
+})
+    
