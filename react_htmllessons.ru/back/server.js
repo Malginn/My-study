@@ -12,6 +12,8 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 //Routes    
 import userRoutes from './routes/userRoutes.js' //импортирnpуем роут
+import exerciseRoutes from './routes/exerciseRoutes.js' //импортирnpуем роут
+import workoutRoutes from './routes/workoutRoutes.js'
 
 //подключаем dotenv
 dotenv.config()
@@ -26,6 +28,8 @@ if(process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 app.use(express.json()) //используем экспресс в формате json
 
 app.use('/api/users', userRoutes)  //подключаем И ПИШЕМ ПУТЬ ДО РОУТА
+app.use('/api/exercises', exerciseRoutes)  
+app.use('/api/workouts', workoutRoutes)  
 
 app.use(notFound)
 app.use(errorHandler)

@@ -1,7 +1,7 @@
 // этот контроллер @desq получает user profile по адресу @route и нужно авторизоваться(private), чтобы его получить
-//@desq Get api user profile
+//@desq         Get user profile
 //@route(путь)  GET /api/users/profile
-//@access Private(авторизованный пользователь   )
+//@access       Private(авторизованный пользователь   )
 
 import asyncHandler from "express-async-handler"
 import User from "../../models/userModel.js"

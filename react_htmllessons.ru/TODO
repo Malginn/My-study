@@ -1,5 +1,7 @@
 TODO: 
-    [x] Обработчик ошибок (middleware)
-    [x] Generate JWT token
-    [x] Token (авторизация - Auth) middleware
-    [x] - Authentication(вход по токену)
+[] - Workouts log(список тренировок, которые мы делали)
+[] - Update exercise and workout
+[] - Delete exercise and workout
+[] - Get statistics for profile
+
+1)создание упражнения/тренировки(пишем модель, пишем контроллер с чем мы передаем, пишем роут, подлкючаем роут в сервер) + связка через objectId
