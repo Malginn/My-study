@@ -15,3 +15,20 @@ export const AddNewWorkout = AsyncHandler(async(req, res) => {
 
     res.json(workout)
 })
+
+
+//@desq   Get workout
+//@route  GET /api/workouts/:id
+//@access Private
+
+
+export const getWorkout = AsyncHandler(async(req, res) => {
+    const workout = await Workout.findById(req.params.id)
+    .populate('exercises') //чтобы раскрылось содержимое внутри workout exercises ИНАЧЕ выведется id упражнений
+    .lean()  //метод который добавил minutes в тренировку(внутри объекта)
+
+    const minutes = Math.ceil(workout.exercises.length * 3.75)  //примерное время тренировки
+
+    res.json({ ...workout, minutes}) //выводим правильно тренировку с минутами
+})
+
