@@ -1,11 +1,11 @@
-//@desq   Add new workout
+//@desq   create new workout
 //@route  POST /api/users/workouts
 //@access Private
 
 import AsyncHandler from "express-async-handler"
 import Workout from "../../models/workoutModel.js"
 
-export const AddNewWorkout = AsyncHandler(async(req, res) => {
+export const createNewWorkout = AsyncHandler(async(req, res) => {
     const {name, exerciseIds} = req.body
 
     const workout = await Workout.create({
@@ -20,7 +20,6 @@ export const AddNewWorkout = AsyncHandler(async(req, res) => {
 //@desq   Get workout
 //@route  GET /api/workouts/:id
 //@access Private
-
 
 export const getWorkout = AsyncHandler(async(req, res) => {
     const workout = await Workout.findById(req.params.id)

@@ -1,7 +1,5 @@
 TODO: 
-[x] - Workout and Exercise log model(модели для списка тренировок и упражнений)
-[ч] - Get workout with list exercises with minutes
-[] - Get exercise page with previous result
+[x] - Get exercise page with previous result
 [] - Update exercise log times + completed
 [] - Update exercise and workout
 [] - Update workoutLog completed

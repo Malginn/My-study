@@ -9,9 +9,9 @@ const exerciseLogSchema = mongoose.Schema(
         ref: 'User',
         required:true,
     },   
-    workout:{type: ObjectId, ref: 'Workout', required: true},  //привязка к тренировке 
+    // workout:{type: ObjectId, ref: 'Workout', required: true},  //привязка к тренировке 
     exercise:{type: ObjectId, ref: 'Exercise', required: true}, //упражнение мы должны привязывать к конкретной тренировке, т.кб упражнения могут повторяться
-    completed: {type: Boolean, default: false}, //тренировка завершена(после последнего упражнения)
+    completed: {type: Boolean, default: false, required: true}, //тренировка завершена(после последнего упражнения)
     times: [
         {
         weight:{ type: Number, required: true},
