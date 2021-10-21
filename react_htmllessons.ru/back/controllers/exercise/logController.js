@@ -11,27 +11,48 @@ export const createNewExerciseLog = asyncHandler(async(req, res) => {
 
     let timesArray = [] //упражнения
 
-    const prevExercises = await ExerciseLog.find({  //поиск предыдущей тренировки
-        user: req.user._id,
-     exercise: exerciseId
-        }).sort('desc')  //сортировка по дате
 
-    if(prevExercises[0]){  //если упражнение уже есть, то по дефолту предыдущее значение из prevEx
-        timesArray = prevExercises[0].times
-    }else{
+//TODO: getExerciseLog куда перенести?
         for(let i = 0;i < times; i++){ //добавляем упражнения и дефолтные значения
             timesArray.push({
                 weight:0,
                 repeat:0
             })
         }        
-    }
+    
 
     const exerciseLog = await ExerciseLog.create({ //создаем список для пользователя с упражнениями и повторениями с весом
         user: req.user._id,
         exercise: exerciseId,
         times: timesArray
     })
+
+    const prevExerciseLogs = await ExerciseLog.find({  //поиск предыдущей тренировки
+        user: req.user._id,
+     exercise: exerciseLog._id,
+        }).sort('desc')  //сортировка по дате
+
+    const prevExLog = prevExerciseLogs[0]
+
+    const log = exerciseLog.toObject()
+
+    const reBuildTimes = (log, prevExLog = null) =>{  //ставим значение предыдущей тренировки
+        log.times.map((item, index) =>({
+            ...item,
+            prevWeight: prevExLog ? prevExLog.times.index.weight : 0, 
+            prevRepeat: prevExLog ? prevExLog.times.index.repeat : 0 ,
+        }))
+    }
+    let newTimes = reBuildTimes(log)
+
+    if(prevExLog){
+        newTimes = reBuildTimes(prevExLog)
+
+        res.json({
+            ...log,
+            times: newTimes,
+        })
+    }
 
     res.json(exerciseLog)
 })

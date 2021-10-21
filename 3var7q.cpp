@@ -13,7 +13,7 @@ int main()
     int max = -2147483647;
     for(i = 1; i<=n; i++){
         cin >> mas[i];
-        if((mas[i] > max)&&(mas[i] <=0)){
+        if((mas[i] > max)&&(mas[i] <=0) && (i % 2)){
             max = mas[i];
         }
     }
