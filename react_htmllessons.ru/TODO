@@ -1,8 +1,4 @@
 TODO: 
-[] - Update exerciseLog completed
-[] - Update exercise and workout
-[] - Update workoutLog completed
-[] - Delete exercise and workout
 [] - Get statistics for profile
 
 1)создание упражнения/тренировки(пишем модель, пишем контроллер с чем мы передаем, пишем роут, подлкючаем роут в сервер) + связка через objectId
