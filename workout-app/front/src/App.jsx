@@ -1,12 +1,17 @@
 import React from 'react'
-import Home from './components/pages/Home/Home'
-import Layout from './components/common/Header/Layout'
+import { BrowserRouter,Routes, Route, Link } from 'react-router-dom'
 
-const App = () => {
-    return ( //это всё будет children??
-    <Layout>
-        <Home />    
-    </Layout>
+import Home from './components/pages/Home/Home'
+import NewWorkout from './components/pages/NewWorkout/NewWorkout'
+
+const App = () => {//это всё будет children?? //exact={true} чтобы учитывался только /, Path- адрес
+    return (  
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={ <Home /> } />
+                <Route path="/new-workout" element={ <NewWorkout /> } />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
