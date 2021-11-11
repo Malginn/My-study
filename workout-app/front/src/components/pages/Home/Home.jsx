@@ -1,7 +1,7 @@
 import Button from "../../ui/button/Button"
 import Layout from '../../common/Layout'
 import Counters from '../../ui/Counters/Counters'
-import bgImage from '../../../images/photo_2021-11-07_15-22-30.jpg'
+import bgImage from '../../../images/photo_2021-11-07_15.jpg'
 import styles from './Home.module.scss'
 import { Link } from 'react-router-dom'
 
