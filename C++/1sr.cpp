@@ -12,9 +12,7 @@ int main()
     cin >> v >> t;
     
     double x = (9.81*t)/(2*v);
-    cout << x;
-    S
-    cout <<"угол равен = " << asin(0.5) <<endl;
+    cout <<"угол равен = " << asin(x) <<endl;
 
     return 0;
 }
