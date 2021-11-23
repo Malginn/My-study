@@ -1,13 +1,19 @@
 import React from 'react'
 import Header from './Header/Header'
+import cn from 'classnames'
 
 import styles from './Layout.module.scss'
 
-const Layout = ({children, bgImage, height='350px', backCallback}) => { //children == content of app layout????
+const Layout = ({children, bgImage, backCallback, heading =''}) => { //children == content of app layout????
     return (
-        <div className={styles.wrapper} style={{height, backgroundImage:`url(${bgImage})`}}>
+        <div className={cn(styles.wrapper, {
+            [styles.otherPages]: !!heading //мы выбираем класс otherPgaes если есть переменная heading
+        })}
+         style={{ backgroundImage:`url(${bgImage})`}}
+         >
             <Header backCallback={backCallback} />
-            <div>{children}</div>
+            {heading && <div className={styles.heading}>{heading}</div>}
+            {children && <div>{children}</div>}
         </div>
     )
 }

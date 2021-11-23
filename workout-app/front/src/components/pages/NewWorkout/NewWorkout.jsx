@@ -16,7 +16,7 @@ const NewWorkout = () => {
 
     return (
         <>
-        <Layout bgImage={bgImage} backCallback={() => navigate(-1)} />
+        <Layout bgImage={bgImage} backCallback={() => navigate(-1)} heading='Create new workout' />
             <div className={styles.wrapper}>
                 <form onSubmit={handleSubmit} >
                     <Field
