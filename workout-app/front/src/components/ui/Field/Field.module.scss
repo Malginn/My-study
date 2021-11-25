@@ -8,8 +8,9 @@
     font-size: 1rem;
     color: white;
     border: 1px solid transparent;
-    margin: 19px auto;
+    margin: 23px auto;
     outline: none;
+    width: 100%;
 
     &:focus{
         border-color: rgba($accent, 0.3);
