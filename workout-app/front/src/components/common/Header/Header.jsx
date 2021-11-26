@@ -3,12 +3,11 @@ import styles from './Header.module.scss'
 import userImage from '../../../images/header/user1.svg'
 import Hamburger from './Hamburger/Hamburger'
 import arrowImage from '../../../images/header/Arrow2.svg'
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const Header = ({backCallback}) =>{  //пишем компонент header
 
     const { pathname } = useLocation()
-    console.log(pathname)
 
     return <header className={styles.header}>
     {pathname !== '/' ? (
@@ -16,9 +15,11 @@ const Header = ({backCallback}) =>{  //пишем компонент header
           <img src={arrowImage} alt="Auth"/>
         </button>
     )    : (
-    <button type='button'>
-          <img src={userImage} alt="Auth"/>
-    </button>
+        <Link to='/auth'>
+          <button type='button'>
+                <img src={userImage} alt="Auth"/>
+          </button>
+        </Link>
     )}
     
     <Hamburger />

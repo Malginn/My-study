@@ -3,7 +3,6 @@ import Layout from '../../common/Layout'
 import bgImage from '../../../images/bg-auth.png'
 import { useNavigate } from 'react-router-dom' 
 import ReactSelect from 'react-select' //выпадающие списки см документацию
-import styles from './NewWorkout.module.scss'
 import Field from '../../ui/Field/Field'
 import Button from '../../ui/button/Button'
 import { optionColor } from './optionColor'
@@ -21,7 +20,7 @@ const NewWorkout = () => {
     return (
         <>
         <Layout bgImage={bgImage} backCallback={() => navigate(-1)} heading='Create new workout' />
-            <div className={styles.wrapper}>
+            <div className='wrapper-inner-page'>
                 <form onSubmit={handleSubmit} >
                     <Field
                         onSubmit={handleSubmit}

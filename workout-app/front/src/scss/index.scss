@@ -1,7 +1,7 @@
 @import './_variables.scss';
 
 body{
-    background-color: $dark-purple;
+    background-color: $black;
     padding: 0px;
     margin: 0;
 	color: #fff;
@@ -168,4 +168,11 @@ img {
 }
 .darkLink:hover{
 	color: $accent;
+}
+
+.wrapper-inner-page{
+    text-align: center;
+    padding: 50px 90px;
+	max-width: 560px;
+	width: 100%;
 }
