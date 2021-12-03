@@ -6,6 +6,9 @@ import Field from '../../ui/Field/Field'
 import Button from '../../ui/button/Button'
 import styles from './Auth.module.scss'
 import Alert from '../../ui/Alert/Alert'
+import { useMutation } from 'react-query'
+import { $api } from '../../../api/api'
+import Loader from '../../ui/Loader'
 
 const Auth = () => {
     const navigate = useNavigate()
@@ -13,13 +16,25 @@ const Auth = () => {
     const [password, setPassword] = React.useState('')
     const [type, setType] = React.useState('auth')  //auth, reg
 
+    const {mutate: register, isLoading, error, data} = useMutation('Registration', () => $api({
+        url:'/users',
+        type: 'POST',
+        body: {email, password},
+        auth: false,
+    }),
+    {
+        onSuccess(data){
+        console.log(data)
+    }}
+    ) //позволяет обновлять и добавлять данные без получения
+
     const handleSubmit = (e) =>{
         e.preventDefault()
 
         if(type === 'auth'){
             console.log('auth')
         }else{
-            console.log('reg')
+            register()
         }
     }
 
@@ -27,7 +42,8 @@ const Auth = () => {
         <>
         <Layout bgImage={bgImage} backCallback={() => navigate(-1)} heading='Auth || Register' />
             <div className='wrapper-inner-page'>
-            {true && <Alert text='You have been successfully'/>}
+            {error && <Alert text={error}/>}
+            {isLoading && <Loader/>}
                 <form onSubmit={handleSubmit}>
                     <Field
                         placeholder='Enter email'
